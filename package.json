@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andy",
@@ -14,5 +15,12 @@
   },
   "devDependencies": {
     "nodemon": "^1.14.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nguyentanmobile/nodejs_reactjs_mycontact.git"
+  },"engine": {
+    "node": "*",
+    "npm": "*"
+}
 }
