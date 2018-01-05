@@ -4,10 +4,10 @@ var BUILD_DIR = path.resolve(__dirname,"./client/public/js");
 var APP_DIR = path.resolve(__dirname,"./app");
 var config =  {
     entry:{
-        index:APP_DIR+"/index.js"
+        index:APP_DIR+"/index.jsx"
     },
     output:{
-        index:BUILD_DIR,
+        path:BUILD_DIR,
         filename:'[name].entry.js',
         publicPath:BUILD_DIR
     },
