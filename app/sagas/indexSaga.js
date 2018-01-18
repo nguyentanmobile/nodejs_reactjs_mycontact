@@ -1,7 +1,9 @@
 import {fork,takeLatest} from 'redux-saga/effects';
-import {getContact} from './contactsaga';
+import {getContent,getLogin,startSignup} from './contentSaga';
 export default function* sagas(){
     yield[
-        fork(takeLatest,'getContact',getContact),
+        fork(takeLatest,'getContent',getContent),
+        fork(takeLatest,'getLogin',getLogin),
+        fork(takeLatest,"startSignup",startSignup)
     ]
 }

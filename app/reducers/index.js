@@ -1,5 +1,5 @@
 import {combineReducers}from 'redux';
-import contact from './contact';
+import userContent from './userContent';
 export const reducers = combineReducers({
-    contact:contact
+    userContent:userContent
 })
