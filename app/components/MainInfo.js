@@ -6,9 +6,8 @@ class MainInfo extends React.Component{
             
     }
 
-    render(){
-        var user = this.props.contact.data.user;
-        console.log(user)
+    render(){        
+        var user = this.props.userContent.content;        
         return(
             <main className="wrapper">
                     <div className="content iform">
@@ -42,13 +41,13 @@ class MainInfo extends React.Component{
 
     update(){
         this.props.dispatch({
-            type:"conctact.update"
+            type:"contact.update"
         })
     }
 }
 function mapStateToProp(state){     
     return({
-        contact:state.contact
+        userContent:state.userContent
     })
 }
 export default connect(mapStateToProp)(MainInfo);

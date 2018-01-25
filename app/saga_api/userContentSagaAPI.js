@@ -69,8 +69,8 @@ export default class ApiUserContent{
               }).then(response=>response.json()).then(resjson=>{
                   
                 if(resjson.error==null ){
-                    if(resjson.user!=null){                                                  
-                        data.userContent=resjson.user;
+                    if(resjson.userContent!=null){                                                  
+                        data.userContent=resjson.userContent;
                     }                   
                 }else{
                     data.error = resjson.error;
@@ -84,25 +84,25 @@ export default class ApiUserContent{
     }
     static startSignup(action){
         const timeout = 1000;
-        console.log("start")
+        let data = {
+            userContent:null,
+            error:null
+        };
         return new Promise(resolve=>{
             setTimeout(()=>{
+               
                 fetch("http://localhost:8081/user/adduser",{
                     method:"POST",
-                    body: action.data/*JSON.stringify(action.data),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                      })*/ 
-                }).then(resolve=>response.json()).then(resjson=>{
-                  
+                    body: action.data
+                }).then(response=>response.json()).then(resjson=>{
+                    
                     if(resjson.error==null ){
-                        if(resjson.user!=null){                                                  
-                            data.userContent=resjson.user;
+                        if(resjson.userContent!=null){                                                  
+                            data.userContent=resjson.userContent;
                         }                   
                     }else{
                         data.error = resjson.error;
-                    }
-                   
+                    }                                  
                     resolve(data);
                     });
             },timeout);

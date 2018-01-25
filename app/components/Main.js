@@ -8,15 +8,22 @@ class Main extends React.Component{
     constructor(props){
         super(props);              
     }
-    render(){  
-        console.log(this.props.userContent) 
+    render(){ 
+      
         if(this.props.userContent.isLoading){
             return(
                 <div>
                    <MainLogin loading="loading"/>
                 </div>
             );
-        }else if(this.props.userContent.isData){
+        }else if(this.props.userContent.isSignuping){           
+            return(
+                <div>
+                    <MainSignup signuping="signuping"/>
+                </div>
+            )
+        }
+        else if(this.props.userContent.isData){
             var user = this.props.userContent.content;
             return(
                 <div>
@@ -32,10 +39,11 @@ class Main extends React.Component{
         }else if(this.props.userContent.isSignup){
             return(
                 <div>
-                    <MainSignup/>
+                    <MainSignup />
                 </div>    
             );
         }else if(this.props.userContent.isUpdate){
+            
             return(
                 <div>
                     <MainUpdate/>

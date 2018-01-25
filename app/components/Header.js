@@ -9,13 +9,13 @@ class Header extends React.Component{
         if(this.props.userContent.isData){
             var image;
             var fullname;
-            if(this.props.userContent.content.user!=null){
-                var user = this.props.userContent.content;            
+            if(this.props.userContent.content!=null){
+                var user = this.props.userContent.content;                            
                 image = "http://localhost:8081"+user.imageurl;
                 fullname= user.fullname
             }else{
                 image = "assets/images/header_user.jpg";
-                fullname="..."
+                fullname="...";
             }
 
             return(

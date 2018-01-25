@@ -8,21 +8,25 @@ export default function userContent(state={},action){
         isData:false,
         isLogin:false,
         isLoading:false,
+        isSignuping:false,
         isSignup:false,
         isUpdate:false,
         content:null, //chính là object user table trong mongodb
         error:null        
     };
    
-    switch(action.type){
+    switch(action.type){        
         case "getLogin":
             new_state.isLoading=true;
+            return new_state;
+        case "startSignup":            
+            new_state.isSignuping = true;              
             return new_state;        
-        case "contact.getcontactSuccess":      
+        case "contact.getcontactSuccess": 
             if(action.data.error==null){
                 if(action.data.userContent==null){
                     new_state.isLogin = true;                                                           
-                }else{                          
+                }else{                                       
                     new_state.isData = true;                                        
                     new_state.content = action.data.userContent;
                 }
@@ -30,7 +34,8 @@ export default function userContent(state={},action){
                 new_state.isLogin = true;
                 new_state.error = action.data.error;
             }
-            new_state.isLoading=false;                  
+            new_state.isLoading=false; 
+            new_state.isSignuping = false;                          
             return new_state;
         case "contact.getcontactError":         
             new_state.isLogin = true;
@@ -59,7 +64,7 @@ export default function userContent(state={},action){
             new_state.isUpdate = false;
             new_state.error ="Can't not login";            
             return new_state;
-        case "conctact.update":
+        case "contact.update":       
             new_state = JSON.parse(JSON.stringify(state));
             new_state.isData = false;
             new_state.isLogin = false;

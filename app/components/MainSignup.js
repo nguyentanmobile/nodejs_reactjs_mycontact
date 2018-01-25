@@ -25,6 +25,12 @@ class MainSignup extends React.Component{
         let $imagePreview = null;
         if(this.state.imagePreviewURL){
             $imagePreview = (<img src={this.state.imagePreviewURL}/>);
+        }        
+        if(this.props.signuping){
+            $("#signupSignuping").css("visibility","visible");
+        }else{
+            $("#signupSignuping").css("visibility","hidden");
+             
         }
         return(            
                 <main className="wrapper">
@@ -75,13 +81,16 @@ class MainSignup extends React.Component{
                             </div>
                         </form>
                     </div>
+                    <div className="loading iload"  id="signupSignuping" >
+                            <p>Signup...</p>
+                    </div>
                 </main>
            
         );
     }
     submit(e){
         var targetData = new FormData(e.target); 
-           console.log(targetData.get("pic"))
+            //nên sử dụng react-image để load hình         
         this.props.dispatch({
             type:"startSignup",
             data:targetData

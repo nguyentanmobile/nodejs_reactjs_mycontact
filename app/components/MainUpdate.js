@@ -6,8 +6,8 @@ class MainUpdate extends React.Component{
     }
 
     render(){
-        var user = this.props.contact.data.user;
-        
+        var user = this.props.userContent.content;
+           
             return(                
                 <main className="wrapper">
                     <div className="update iform" >
@@ -49,7 +49,7 @@ class MainUpdate extends React.Component{
                                 <textarea className="colright" defaultValue={user.info} name="info" cols="20" rows="20"></textarea>
                             </div>                            
                             <div className="row">                                
-                                <button  type="submit">Save</button>
+                                <button  type="submit">Save1</button>
                                 <button  type="buttom" onClick={this.backMain.bind(this)}>Cancel</button>
                             </div>
                         </form>
@@ -58,21 +58,22 @@ class MainUpdate extends React.Component{
                
             );
     }
-    submit(e){
-        e.preventDefault();
-        console.log(e.target)
+    submit(e){        
+        var targetData = new FromData(e.target);
+        
+        e.preventDefault();       
         return false;
     }
     backMain(e){
         this.props.dispatch({
-            type:"contact.back"
+            type:"contact.backMain"
         });
     }
 }
 function mapStateToProp(state){
         
     return({
-        contact:state.contact
+        userContent:state.userContent
     })
 }
 export default connect(mapStateToProp)(MainUpdate);
