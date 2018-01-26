@@ -52,7 +52,7 @@ export default class ApiUserContent{
         },timeout);
     }
     static getLogin(action){        
-        const timeout=1000;
+        const timeout=1000;        
         return new Promise(resolve=>{
             setTimeout(()=>{
                 let data = {
@@ -62,10 +62,10 @@ export default class ApiUserContent{
                 
             fetch("http://localhost:8081/user/login", {
                 method: 'POST',
-                body: JSON.stringify(action.data), 
+                body:action.data /*JSON.stringify(action.data), 
                 headers: new Headers({
                   'Content-Type': 'application/json'
-                })
+                })*/
               }).then(response=>response.json()).then(resjson=>{
                   
                 if(resjson.error==null ){

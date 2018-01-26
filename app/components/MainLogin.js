@@ -23,11 +23,11 @@ class MainLogin extends React.Component{
                     
                     <div className="login iform" >
                         <h2>Login</h2>
-                        <form name="loginf " onSubmit={this.submit.bind(this)}>                            
+                        <form name="loginf " onSubmit={this.submit.bind(this)} >                            
                             <div className="row">
                                 <label className="colleft">User name</label>
                                 <span>:</span>
-                                <input className="colright" type="text" name="username" required/>
+                                <input className="colright" type="text" name="userid" required/>
                             </div>
                             <div className="row">
                                 <label className="colleft">Password</label>
@@ -44,24 +44,25 @@ class MainLogin extends React.Component{
                         </div>
                     </div>
                     <div className="loading iload"  id="loginLoading" >
-                            <p>Loading...</p>
+                            <p>Login...</p>
                     </div>
                 </main>           
         );
     }
-    submit(e){
-        e.preventDefault();
+    submit(e){       
         var targetData = new FormData(e.target);
-               
+        
         this.props.dispatch({
             type:"getLogin",
-            
+            data:targetData
+            /*
             data:{
                 "username":targetData.get("username"),
                 "password":targetData.get("password")
-            }
+            }*/
         })
         
+        e.preventDefault();
         return false;
     }
     signup(e){

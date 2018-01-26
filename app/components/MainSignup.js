@@ -36,7 +36,7 @@ class MainSignup extends React.Component{
                 <main className="wrapper">
                     <div className="signup iform" >
                         <h2>Signup</h2>
-                        <form name="signupf" onSubmit={this.submit.bind(this)}>                            
+                        <form name="signupf" onSubmit={this.submit.bind(this)}  >                            
                             <div className="row">
                                 <label className="colleft">User id</label>
                                 <span>:</span>
@@ -90,6 +90,7 @@ class MainSignup extends React.Component{
     }
     submit(e){
         var targetData = new FormData(e.target); 
+        console.log(targetData)
             //nên sử dụng react-image để load hình         
         this.props.dispatch({
             type:"startSignup",

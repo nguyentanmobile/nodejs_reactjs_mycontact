@@ -6,17 +6,16 @@ class MainUpdate extends React.Component{
     }
 
     render(){
-        var user = this.props.userContent.content;
-           
+        var user = this.props.userContent.content;           
             return(                
                 <main className="wrapper">
                     <div className="update iform" >
-                        <h2>Update Data</h2>
-                        <form name="signupf" onSubmit={this.submit.bind(this)}>                            
+                        <h2>Update  Data</h2>
+                        <form name="signupf" onSubmit={this.submitUpdate.bind(this)} >                            
                             <div className="row">
                                 <label className="colleft">User id</label>
                                 <span>:</span>
-                                <input className="colright" type="text" defaultValue={user.username} name="userid" placeholder="Enter your id" />
+                                <input className="colright" type="text" defaultValue={user.userid} name="userid" placeholder="Enter your id"/>
                             </div>
                             <div className="row">
                                 <label className="colleft">Password</label>
@@ -49,21 +48,31 @@ class MainUpdate extends React.Component{
                                 <textarea className="colright" defaultValue={user.info} name="info" cols="20" rows="20"></textarea>
                             </div>                            
                             <div className="row">                                
-                                <button  type="submit">Save1</button>
-                                <button  type="buttom" onClick={this.backMain.bind(this)}>Cancel</button>
+                                <button  type="submit">Save2</button>
+                                <button  type="button" onClick={this.backMain.bind(this)}>Cancel</button>
                             </div>
                         </form>
+                    </div>
+                    <div className="loading iload"  id="updateUpdating" >
+                            <p>Updating...</p>
                     </div>
                 </main>
                
             );
     }
-    submit(e){        
-        var targetData = new FromData(e.target);
-        
-        e.preventDefault();       
+    submitUpdate(e){   
+        var targetData = new FormData(e.target)
+        console.log(targetData.get("userid"));
+        console.log(targetData.get("pic"))
+        /*this.props.dispatch({
+            type:"startUpdate",
+            data:target
+        })*/
+
+        e.preventDefault();
         return false;
     }
+    
     backMain(e){
         this.props.dispatch({
             type:"contact.backMain"

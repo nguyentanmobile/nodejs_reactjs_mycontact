@@ -4,9 +4,8 @@ class Header extends React.Component{
     constructor(props){
         super(props);        
     }
-    render(){
-             
-        if(this.props.userContent.isData){
+    render(){        
+      
             var image;
             var fullname;
             if(this.props.userContent.content!=null){
@@ -17,7 +16,7 @@ class Header extends React.Component{
                 image = "assets/images/header_user.jpg";
                 fullname="...";
             }
-
+            
             return(
                 <header>
                     <h1 className="hidden">my contact</h1>
@@ -26,18 +25,9 @@ class Header extends React.Component{
                         <p>{fullname}</p>
                     </div>
                 </header>
-            );
-        }else{
-            return(
-                <header>
-                    <h1 className="hidden">my contact</h1>
-                    <div className="wrapper" id="imageuser">
-                        <img src="assets/images/header_user.jpg" alt="image"/>
-                        <p>...</p>
-                    </div>
-                </header>
-            );
-        }
+            );       
+            
+        
     }
 }
 

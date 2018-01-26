@@ -14,7 +14,7 @@ export default function userContent(state={},action){
         content:null, //chính là object user table trong mongodb
         error:null        
     };
-   
+   console.log("asdf"+action.type)
     switch(action.type){        
         case "getLogin":
             new_state.isLoading=true;
@@ -34,8 +34,8 @@ export default function userContent(state={},action){
                 new_state.isLogin = true;
                 new_state.error = action.data.error;
             }
-            new_state.isLoading=false; 
-            new_state.isSignuping = false;                          
+            //new_state.isLoading=false; 
+            //new_state.isSignuping = false;                                     
             return new_state;
         case "contact.getcontactError":         
             new_state.isLogin = true;
