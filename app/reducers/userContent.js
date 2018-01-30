@@ -6,21 +6,24 @@ export default function userContent(state={},action){
     };*/
     let new_state={
         isData:false,
-        isLogin:false,
-        isLoading:false,
-        isSignuping:false,
+        isLogin:false,       
         isSignup:false,
         isUpdate:false,
+        isLoading:false,
+        isSignuping:false,
+        isUpdating:false,
         content:null, //chính là object user table trong mongodb
         error:null        
-    };
-   console.log("asdf"+action.type)
+    };      
     switch(action.type){        
         case "getLogin":
             new_state.isLoading=true;
             return new_state;
         case "startSignup":            
             new_state.isSignuping = true;              
+            return new_state;            
+        case "startUpdate":           
+            new_state.isUpdating = true;
             return new_state;        
         case "contact.getcontactSuccess": 
             if(action.data.error==null){
@@ -45,8 +48,13 @@ export default function userContent(state={},action){
         case "contact.backMain":
             new_state = JSON.parse(JSON.stringify(state));           
             new_state.isSignup =false;
-            new_state.isLogin = true;                        
-            new_state.error ="Login system or Signup";
+            if(new_state.content==null){
+                new_state.isLogin = true;                        
+                new_state.error ="Login system or Signup";
+            }else{
+                new_state.isData = true;                       
+               
+            }
             return new_state;
         case "contact.login":
             new_state = JSON.parse(JSON.stringify(state));

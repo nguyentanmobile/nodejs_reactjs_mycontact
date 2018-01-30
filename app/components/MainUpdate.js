@@ -2,16 +2,34 @@ import React from 'react';
 import {connect} from 'react-redux';
 class MainUpdate extends React.Component{
     constructor(props){
-        super(props);          
+        super(props);
+        this.state={
+            userid:"",
+            password:"",
+            imageurl:"",
+            fullname:"",
+            email:"",
+            phone:"",
+            info:"" 
+        }          
     }
 
-    render(){
-        var user = this.props.userContent.content;           
+    render(){ 
+        var user={} ;      
+        if(this.props.updating){
+            $("#updateUpdating").css("visibility","visible");
+            user = this.state;
+        }else{
+            $("#updateUpdating").css("visibility","hidden");     
+            user = this.props.userContent.content;        
+        }
+         
+            
             return(                
                 <main className="wrapper">
                     <div className="update iform" >
                         <h2>Update  Data</h2>
-                        <form name="signupf" onSubmit={this.submitUpdate.bind(this)} >                            
+                        <form name="updatef" onSubmit={this.submitUpdates.bind(this)} >                            
                             <div className="row">
                                 <label className="colleft">User id</label>
                                 <span>:</span>
@@ -48,7 +66,7 @@ class MainUpdate extends React.Component{
                                 <textarea className="colright" defaultValue={user.info} name="info" cols="20" rows="20"></textarea>
                             </div>                            
                             <div className="row">                                
-                                <button  type="submit">Save2</button>
+                                <button  type="submit">Save</button>
                                 <button  type="button" onClick={this.backMain.bind(this)}>Cancel</button>
                             </div>
                         </form>
@@ -60,15 +78,23 @@ class MainUpdate extends React.Component{
                
             );
     }
-    submitUpdate(e){   
-        var targetData = new FormData(e.target)
-        console.log(targetData.get("userid"));
-        console.log(targetData.get("pic"))
-        /*this.props.dispatch({
+    submitUpdates(e){   
+     
+       var targetData = new FormData(e.target); 
+       this.setState({
+        userid:targetData.get("userid"),
+        password:targetData.get("password"),
+        imageurl:targetData.get("imageurl"),
+        fullname:targetData.get("fullname"),
+        email:targetData.get("email"),
+        phone:targetData.get("phone"),
+        info:targetData.get("info") 
+        })     
+        this.props.dispatch({
             type:"startUpdate",
-            data:target
-        })*/
-
+            data:targetData
+        })
+        
         e.preventDefault();
         return false;
     }

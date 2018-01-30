@@ -50,3 +50,18 @@ export function* startSignup(action){
         })
     }
 }
+export function* startUpdate(action){
+    try{              
+        var newUserContent = yield call(UserContentApi.startUpdate,action);
+       
+        yield put({
+            type:"contact.getcontactSuccess",
+            data:newUserContent
+        });
+    }catch(e){        
+        yield put({
+            type:"contact.getcontactError",
+            error:e.message
+        })
+    }
+}

@@ -62,20 +62,19 @@ export default class ApiUserContent{
                 
             fetch("http://localhost:8081/user/login", {
                 method: 'POST',
-                body:action.data /*JSON.stringify(action.data), 
+                body:JSON.stringify(action.data), 
                 headers: new Headers({
                   'Content-Type': 'application/json'
-                })*/
+                })
               }).then(response=>response.json()).then(resjson=>{
-                  
+                 
                 if(resjson.error==null ){
                     if(resjson.userContent!=null){                                                  
                         data.userContent=resjson.userContent;
                     }                   
                 }else{
                     data.error = resjson.error;
-                }
-               
+                }               
                 resolve(data);
                 });
 
@@ -103,6 +102,32 @@ export default class ApiUserContent{
                     }else{
                         data.error = resjson.error;
                     }                                  
+                    resolve(data);
+                    });
+            },timeout);
+        })
+    }
+    static startUpdate(action){
+        const timeout = 1000;
+        let data = {
+            userContent:null,
+            error:null
+        };
+        return new Promise(resolve=>{
+            setTimeout(()=>{
+               
+                fetch("http://localhost:8081/user/update",{
+                    method:"POST",
+                    body: action.data
+                }).then(response=>response.json()).then(resjson=>{
+                    
+                    if(resjson.error==null ){
+                        if(resjson.userContent!=null){                                                  
+                            data.userContent=resjson.userContent;
+                        }                   
+                    }else{
+                        data.error = resjson.error;
+                    }                                                    
                     resolve(data);
                     });
             },timeout);

@@ -9,7 +9,7 @@ class Main extends React.Component{
         super(props);              
     }
     render(){ 
-      
+        console.log(this.props.userContent)
         if(this.props.userContent.isLoading){
             return(
                 <div>
@@ -20,6 +20,14 @@ class Main extends React.Component{
             return(
                 <div>
                     <MainSignup signuping="signuping"/>
+                </div>
+            )
+        }
+        else if(this.props.userContent.isUpdating){   
+            console.log("isUpdateing")        
+            return(
+                <div>
+                     <MainUpdate updating="updating"/>
                 </div>
             )
         }

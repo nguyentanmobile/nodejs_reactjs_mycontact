@@ -26,7 +26,7 @@ class App extends React.Component{
     }
     render(){
                      
-        if(this.props.userContent.content!=null || this.props.userContent.error!=null || this.props.userContent.isLoading ||this.props.userContent.isSignuping){                   
+        if(this.props.userContent.content!=null || this.props.userContent.error!=null || this.props.userContent.isLoading ||this.props.userContent.isUpdating || this.props.userContent.isSignuping){                   
             
             return(
                 <div>                    

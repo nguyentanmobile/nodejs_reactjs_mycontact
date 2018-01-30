@@ -18,7 +18,6 @@ class MainLogin extends React.Component{
         }
         
         return(
-
                  <main className="wrapper">
                     
                     <div className="login iform" >
@@ -53,13 +52,11 @@ class MainLogin extends React.Component{
         var targetData = new FormData(e.target);
         
         this.props.dispatch({
-            type:"getLogin",
-            data:targetData
-            /*
+            type:"getLogin",            
             data:{
-                "username":targetData.get("username"),
+                "userid":targetData.get("userid"),
                 "password":targetData.get("password")
-            }*/
+            }
         })
         
         e.preventDefault();
